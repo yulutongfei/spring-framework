@@ -47,7 +47,7 @@ public class ReactorClientHttpConnector implements ClientHttpConnector {
 	 * with default configuration and HTTP compression support enabled.
 	 */
 	public ReactorClientHttpConnector() {
-		this.httpClient = HttpClient.create().compress();
+		this.httpClient = HttpClient.create().compress(true);
 	}
 
 	/**

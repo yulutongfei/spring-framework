@@ -21,6 +21,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import reactor.netty.DisposableServer;
 
 import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
+import reactor.netty.tcp.SslProvider;
 
 /**
  * @author Stephane Maldini
@@ -38,7 +39,7 @@ public class ReactorHttpsServer extends AbstractHttpServer {
 	protected void initServer() {
 		this.reactorHandler = createHttpHandlerAdapter();
 		this.reactorServer = reactor.netty.http.server.HttpServer.create()
-			.tcpConfiguration(server -> server.host(getHost()).secure())
+			.tcpConfiguration(server -> server.host(getHost()).secure(SslProvider.defaultClientProvider()))
 			.port(getPort());
 	}
 
