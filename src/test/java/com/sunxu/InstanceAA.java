@@ -1,7 +1,6 @@
-package com.sunxu.circulardependecies;
+package com.sunxu;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.type.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,20 +9,20 @@ import org.springframework.stereotype.Component;
  * @date 2020/10/20 07:45
  */
 @Component
-public class InstanceA implements IApi{
+public class InstanceAA implements IApi {
 
 	@Autowired
-	private InstanceB instanceB;
+	private InstanceBB instanceBB;
 
-	public InstanceB getInstanceB() {
-		return instanceB;
+	public InstanceBB getInstanceB() {
+		return instanceBB;
 	}
 
-	public void setInstanceB(InstanceB instanceB) {
-		this.instanceB = instanceB;
+	public void setInstanceB(InstanceBB instanceBB) {
+		this.instanceBB = instanceBB;
 	}
 
-	public InstanceA() {
+	public InstanceAA() {
 		System.out.println("InstanceA实例化");
 	}
 
