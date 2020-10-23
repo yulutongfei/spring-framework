@@ -274,8 +274,8 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					this.suppressedExceptions = new LinkedHashSet<>();
 				}
 				try {
-					// 初始化 bean
-					// 这个过程其实是调用createBean()方法
+					//<3> 初始化 bean
+					// 这个过程其实是调用 createBean() 方法
 					singletonObject = singletonFactory.getObject();
 					newSingleton = true;
 				}
@@ -300,9 +300,12 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					if (recordSuppressedExceptions) {
 						this.suppressedExceptions = null;
 					}
+					// <4> 后置处理
+					//主要做的事情就是把singletonsCurrentlyInCreation标记正在创建的bean从集合中移除
 					afterSingletonCreation(beanName);
 				}
 				if (newSingleton) {
+					// <5> 加入缓存中
 					addSingleton(beanName, singletonObject);
 				}
 			}
